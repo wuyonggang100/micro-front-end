@@ -4,8 +4,6 @@ import routes from "./router";
 // import store from "./store";
 import { createWebHistory, createRouter } from "vue-router";
 
-// createApp(App).use(store).use(router).mount("#app");
-
 let history;
 let router;
 let app;
@@ -22,6 +20,7 @@ function render(props = {}) {
 }
 
 // 不是在qiankun 中使用时，需要独立运行；
+debugger;
 if (!window.__POWERED_BY_QIANKUN__) {
   render();
 }

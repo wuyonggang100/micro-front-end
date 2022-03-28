@@ -9,7 +9,7 @@ module.exports = {
   configureWebpack: {
     output: {
       libraryTarget: "umd", //使用 umd 方式打包，变量都挂载到 window 上
-      library: "wu-vue", // 挂载到 wndow 上的变量名
+      library: "wu-vue", // 挂载到 window    上的变量名
     },
   },
 };
