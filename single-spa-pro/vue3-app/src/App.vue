@@ -2,6 +2,9 @@
   <div id="nav">
     <!--    父应用传过来的数据-->
     <h1>{{ info }}</h1>
+    <h1>{{ name }}</h1>
+    <h1>{{ mountParcel }}</h1>
+    <h1>{{ singleSpa }}</h1>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
@@ -10,10 +13,14 @@
 <script>
 import { onMounted } from "vue";
 export default {
-  props: {
-    info: Object,
-    default: () => ({}),
-  },
+  // name: this.name,
+  // mountParcel: this.mountParcel,
+  // singleSpa: this.singleSpa,
+  props: ["info", "name", "mountParcel", "singleSpa"],
+  // props: name{
+  //   info: Object,
+  //   default: () => ({}),
+  // },
   setup(props) {
     onMounted(() => {
       console.log("onMounted----");
