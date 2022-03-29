@@ -124,8 +124,19 @@ start();
   如果修改端口，需要在 react 项目下新建一个 .env 文件
 
   ```shell
+  // .env 文件
   PORT=4000
   WDS_SOCKET_PORT=4000  # 热更新的端口
   ```
 
+  运行时要使用 rescripts 命令， 而不是 react-scripts, 如  ``react-scripts start  ``  要改成          ``rescripts start`` ;
+
+  ```shell
+   "start": "rescripts start",
+   "build": "react-scripts build",
+   "test": "react-scripts test",
+   "eject": "react-scripts eject"
+  ```
+
   
+

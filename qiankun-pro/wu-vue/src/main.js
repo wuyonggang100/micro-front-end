@@ -20,7 +20,6 @@ function render(props = {}) {
 }
 
 // 不是在qiankun 中使用时，需要独立运行；
-debugger;
 if (!window.__POWERED_BY_QIANKUN__) {
   render();
 }

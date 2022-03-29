@@ -13,7 +13,7 @@ const apps = [
   },
   {
     name: "wu-react",
-    entry: "//localhost:3001",
+    entry: "//localhost:4001",
     container: "#container",
     activeRule: "/react",
     loader,
