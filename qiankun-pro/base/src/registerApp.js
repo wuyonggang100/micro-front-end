@@ -37,4 +37,9 @@ registerMicroApps(apps, {
   },
 });
 
-start();
+start({
+  sandbox: {
+    experimentalStyleIsolation: true, // 实验性的样式解决方案
+    // strictStyleIsolation: true, // 使用 shadowdom 方式解决,
+  },
+});

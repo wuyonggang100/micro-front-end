@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div>wu</div>
+    <script>
+      const appContent = `<div id="qiankun">
+          <div>hello wu</div>
+          <style>div{color:red}</style>
+      </div>`;
+
+      // 创建 shadowDom, 外界无法访问
+      const containerElement = document.createElement("div");
+      containerElement.innerHTML = appContent;
+      const appElement = containerElement.firstChild; // 将字符串变为 dom
+      const html = appElement.innerHTML;
+      appElement.innerHTML = ""; // 将本身内容清空，仅仅作为壳子，只使用影子的内容
+      const shadow = appElement.attachShadow({ mode: "open" }); // 给 dom 加个影子
+      shadow.innerHTML = html; // 给影子加上内容
+      document.body.appendChild(appElement);
+    </script>
+  </body>
+</html>

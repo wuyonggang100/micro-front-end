@@ -13,7 +13,6 @@ module.exports = {
   },
   devServer: (config) => {
     console.log("我devserver运行了");
-    // config.injectClient = false;
     config.headers = {
       "Access-Control-Allow-Origin": "*", // 允许跨域
     };

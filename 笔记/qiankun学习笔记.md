@@ -107,16 +107,23 @@ start();
 
   ```js
   // .rescriptsrc.js
+  const packageName = require("./package.json").name;
+  const outputCfg = {
+    library: packageName,
+    libraryTarget: "umd",
+    publicPath: "//localhost:4001/", // 末尾的 / 不能少
+  };
+  
   module.exports = {
     webpack(config) {
-      config.output.library = "wu-react";
-      config.output.libraryTarget = "umd";
-      config.output.publicPath = "//localhost:4000";
+      config.output = { ...config.output, ...outputCfg };
+      return config;
     },
     devServer: (config) => {
       config.headers = {
         "Access-Control-Allow-Origin": "*", // 允许跨域
       };
+      return config;
     },
   };
   ```
@@ -129,7 +136,7 @@ start();
   WDS_SOCKET_PORT=4000  # 热更新的端口
   ```
 
-  运行时要使用 rescripts 命令， 而不是 react-scripts, 如  ``react-scripts start  ``  要改成          ``rescripts start`` ;
+  运行时要使用 rescripts 命令， 而不是 react-scripts, 如  ``react-scripts start  ``  要改成  ``rescripts start`` ;
 
   ```shell
    "start": "rescripts start",
@@ -138,5 +145,24 @@ start();
    "eject": "react-scripts eject"
   ```
 
-  
+### css 隔离
 
+> qainkun 中切换应用时会采用动态样式表；加载时添加样式，卸载时删除样式，因此做到各个子应用之间的 css 隔离；但是存在主子应用之间的样式冲突问题；
+
+- 解决方法一，通过 BEM 规范命名的方式来解决，但是此方式较弱；
+
+- 解决方式二， 使用 css-module 方式来解决，此方式较好；具体实现，在注册好子应用后，在 start 方法中添加一个配置，加个配置如下；此方案并不是最好的；
+
+  ```js
+  start({
+    sandbox: {
+      experimentalStyleIsolation: true, // 实验性的样式解决方案
+    },
+  });
+  ```
+
+  得到效果如下，会在每个应用的样式上加个前缀进行隔离
+
+  ![image-20220329181034312](qiankun学习笔记.assets/image-20220329181034312.png)
+
+- 解决方式三： shadowDOM, 即影子 dom 
