@@ -18,7 +18,7 @@
       const appElement = containerElement.firstChild; // 将字符串变为 dom
       const html = appElement.innerHTML;
       appElement.innerHTML = ""; // 将本身内容清空，仅仅作为壳子，只使用影子的内容
-      const shadow = appElement.attachShadow({ mode: "open" }); // 给 dom 加个影子
+      const shadow = appElement.attachShadow({ mode: "open" }); // 给 dom 加个影子, 还可以是 closeed，此时与外界完全隔离
       shadow.innerHTML = html; // 给影子加上内容
       document.body.appendChild(appElement);
     </script>

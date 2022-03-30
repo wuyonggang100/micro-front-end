@@ -17,6 +17,7 @@ const apps = [
     container: "#container",
     activeRule: "/react",
     loader,
+    // props: {}, // 传参
   },
 ];
 registerMicroApps(apps, {
